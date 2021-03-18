@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 
 class HomePage extends Component {
   state = {};
+
+  componentDidMount() {
+    //
+  }
+
   render() {
     return (
       <div>
