@@ -1,3 +1,3 @@
 # React Homework. Module 4
 
-Image finder.
+Movies App
