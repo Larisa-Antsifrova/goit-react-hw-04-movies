@@ -7,8 +7,6 @@ import NotFound from './views/NotFound';
 
 import { Route, NavLink, Switch } from 'react-router-dom';
 
-import './services/moviesApi';
-
 class App extends Component {
   state = {};
   render() {
