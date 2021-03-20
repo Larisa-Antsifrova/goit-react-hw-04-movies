@@ -36,11 +36,11 @@ class App extends Component {
           </ul>
         </nav>
         <Switch>
+          <Route exact path="/" component={HomePage} />
           <Route exact path="/movies" component={MoviesPage} />
           <Route path="/movies/:movieId" component={MovieDetailsPage} />
           <Route path="/movies/:movieId/cast" component={MovieDetailsPage} />
           <Route path="/movies/:movieId/reviews" component={MovieDetailsPage} />
-          <Route exact path="/" component={HomePage} />
           <Route component={NotFound} />
         </Switch>
       </>
