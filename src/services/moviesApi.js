@@ -1,11 +1,12 @@
 import axios from 'axios';
 
 const API_KEY = process.env.REACT_APP_API_KEY;
+const BASE_URL = 'https://api.themoviedb.org/3';
 
 async function fetchTrendingMovies() {
   try {
     const trendingMovies = await axios.get(
-      `https://api.themoviedb.org/3/trending/all/day?api_key=${API_KEY}`,
+      `${BASE_URL}/trending/all/day?api_key=${API_KEY}`,
     );
     return trendingMovies.data.results;
   } catch (error) {
@@ -16,7 +17,7 @@ async function fetchTrendingMovies() {
 async function fetchSearchedMovies(query) {
   try {
     const searchedMovies = await axios.get(
-      `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${query}`,
+      `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`,
     );
 
     return searchedMovies.data.results;
