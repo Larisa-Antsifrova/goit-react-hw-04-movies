@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import Search from '../components/Search';
+import BtnBack from '../components/BtnBack/BtnBack';
 
 import { fetchSearchedMovies } from '../services/moviesApi';
 
@@ -34,6 +35,7 @@ class MoviesPage extends Component {
     return (
       <div>
         <h1>Search Moives Page</h1>
+        <BtnBack history={this.props.history} />
         <Search onSubmit={this.handleSubmit} />
         <ul>
           {searchedMovies.map(searchedMovie => (
