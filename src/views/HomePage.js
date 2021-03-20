@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import { fetchTrendingMovies } from '../services/moviesApi';
-
-console.log(fetchTrendingMovies());
 
 class HomePage extends Component {
   state = {
@@ -11,7 +10,6 @@ class HomePage extends Component {
 
   async componentDidMount() {
     const trendingMovies = await fetchTrendingMovies();
-    console.log('trendingMovies', trendingMovies);
     this.setState({ trendingMovies });
   }
 
@@ -23,7 +21,9 @@ class HomePage extends Component {
         <ul>
           {trendingMovies.map(trendingMovie => (
             <li key={trendingMovie.id}>
-              {trendingMovie.title ? trendingMovie.title : trendingMovie.name}
+              <Link to="/movies/:movieId">
+                {trendingMovie.title ? trendingMovie.title : trendingMovie.name}
+              </Link>
             </li>
           ))}
         </ul>

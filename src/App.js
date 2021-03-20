@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 
 import HomePage from './views/HomePage';
 import MoviesPage from './views/MoviesPage';
@@ -11,7 +11,7 @@ class App extends Component {
   state = {};
   render() {
     return (
-      <Fragment>
+      <>
         <nav>
           <ul>
             <li>
@@ -37,13 +37,13 @@ class App extends Component {
         </nav>
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route path="/movies" component={MoviesPage} />
+          <Route exact path="/movies" component={MoviesPage} />
           <Route path="/movies/:movieId" component={MovieDetailsPage} />
           <Route path="/movies/:movieId/cast" component={MovieDetailsPage} />
           <Route path="/movies/:movieId/reviews" component={MovieDetailsPage} />
           <Route component={NotFound} />
         </Switch>
-      </Fragment>
+      </>
     );
   }
 }
