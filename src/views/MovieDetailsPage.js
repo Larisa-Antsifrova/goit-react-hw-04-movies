@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const MovieDetailsPage = () => {
-  return (
-    <div>
-      <h1>Movies Details Page</h1>
-    </div>
-  );
-};
+class MovieDetailsPage extends Component {
+  state = {};
+  render() {
+    return (
+      <div>
+        <h1>Movies Details Page</h1>
+      </div>
+    );
+  }
+}
 
 export default MovieDetailsPage;

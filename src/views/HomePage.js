@@ -22,7 +22,7 @@ class HomePage extends Component {
         <ul>
           {trendingMovies.map(trendingMovie => (
             <li key={trendingMovie.id}>
-              <Link to="/movies/:movieId">
+              <Link to={`/movies/${trendingMovie.id}`}>
                 {trendingMovie.title ? trendingMovie.title : trendingMovie.name}
               </Link>
             </li>

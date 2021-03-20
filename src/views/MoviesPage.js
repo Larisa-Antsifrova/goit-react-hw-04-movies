@@ -38,7 +38,7 @@ class MoviesPage extends Component {
         <ul>
           {searchedMovies.map(searchedMovie => (
             <li key={searchedMovie.id}>
-              <Link to="/movies/:movieId">
+              <Link to={`${this.props.match.url}/${searchedMovie.id}`}>
                 {searchedMovie.title ? searchedMovie.title : searchedMovie.name}
               </Link>
             </li>
