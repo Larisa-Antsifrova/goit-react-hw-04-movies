@@ -15,6 +15,7 @@ class HomePage extends Component {
 
   render() {
     const { trendingMovies } = this.state;
+
     return (
       <div>
         <h1>Home Page</h1>

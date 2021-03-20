@@ -13,4 +13,16 @@ async function fetchTrendingMovies() {
   }
 }
 
-export { fetchTrendingMovies };
+async function fetchSearchedMovies(query) {
+  try {
+    const searchedMovies = await axios.get(
+      `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${query}`,
+    );
+
+    return searchedMovies.data.results;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export { fetchTrendingMovies, fetchSearchedMovies };
