@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import Search from '../components/Search';
-import BtnBack from '../components/BtnBack/BtnBack';
+import BtnBack from '../components/BtnBack';
 
 import { fetchSearchedMovies } from '../services/moviesApi';
 

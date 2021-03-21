@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import BtnBack from '../components/BtnBack/BtnBack';
+import BtnBack from '../components/BtnBack';
 
 class TestPage extends Component {
   state = {};
