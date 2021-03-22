@@ -3,21 +3,37 @@ import BtnBack from '../components/BtnBack';
 import { fetchMovie } from '../services/moviesApi';
 
 class MovieDetailsPage extends Component {
-  state = {};
+  state = {
+    movie: null,
+  };
 
   async componentDidMount() {
     const { movieId } = this.props.match.params;
     const movie = await fetchMovie(movieId);
-    console.log(movie);
+    this.setState({ movie: movie });
   }
 
   render() {
-    return (
-      <div>
-        <h1>Movies Details Page for {this.props.match.params.movieId}</h1>
-        <BtnBack history={this.props.history} />
-      </div>
-    );
+    const { movie } = this.state;
+
+    if (movie) {
+      const { title, poster_path, overview } = movie;
+
+      return (
+        <>
+          <h1>Details</h1>
+          <h1>{this.state.movie.title}</h1>
+          <BtnBack history={this.props.history} />
+          <img
+            src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+            alt={title}
+          />
+          <p>{overview}</p>
+        </>
+      );
+    } else {
+      return <h1>Details Page</h1>;
+    }
   }
 }
 
