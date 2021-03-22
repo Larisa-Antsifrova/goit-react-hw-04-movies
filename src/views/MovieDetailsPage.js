@@ -57,7 +57,7 @@ class MovieDetailsPage extends Component {
         </>
       );
     } else {
-      return <h1>Details Page</h1>;
+      return null;
     }
   }
 }

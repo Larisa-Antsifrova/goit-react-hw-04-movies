@@ -8,6 +8,9 @@ import MoviesPage from './views/MoviesPage';
 import MovieDetailsPage from './views/MovieDetailsPage';
 import NotFound from './views/NotFound';
 
+// Routes imports
+import routes from './routes';
+
 class App extends Component {
   state = {};
   render() {
@@ -18,7 +21,7 @@ class App extends Component {
             <li>
               <NavLink
                 exact
-                to="/"
+                to={routes.home}
                 className="NavLink"
                 activeClassName="NavLink-active"
               >
@@ -27,7 +30,7 @@ class App extends Component {
             </li>
             <li>
               <NavLink
-                to="/movies"
+                to={routes.movieSearch}
                 className="NavLink"
                 activeClassName="NavLink-active"
               >
@@ -37,9 +40,9 @@ class App extends Component {
           </ul>
         </nav>
         <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route exact path="/movies" component={MoviesPage} />
-          <Route path="/movies/:movieId" component={MovieDetailsPage} />
+          <Route exact path={routes.home} component={HomePage} />
+          <Route exact path={routes.movieSearch} component={MoviesPage} />
+          <Route path={routes.movieDetails} component={MovieDetailsPage} />
           <Route component={NotFound} />
         </Switch>
       </>
