@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
 import BtnBack from '../components/BtnBack';
+import { fetchMovie } from '../services/moviesApi';
 
 class MovieDetailsPage extends Component {
   state = {};
+
+  async componentDidMount() {
+    const { movieId } = this.props.match.params;
+    const movie = await fetchMovie(movieId);
+    console.log(movie);
+  }
+
   render() {
     return (
       <div>
