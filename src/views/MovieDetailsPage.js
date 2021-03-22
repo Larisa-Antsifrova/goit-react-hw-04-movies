@@ -9,6 +9,8 @@ import Cast from '../components/Cast';
 import Reviews from '../components/Reviews';
 
 import { fetchMovie, fetchCast, fetchReviews } from '../services/moviesApi';
+import _ from 'lodash';
+
 class MovieDetailsPage extends Component {
   state = {
     movie: null,
