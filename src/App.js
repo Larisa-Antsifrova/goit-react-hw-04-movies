@@ -10,6 +10,7 @@ import NotFound from './views/NotFound';
 
 // Components imports
 import AppBar from './components/AppBar';
+import Footer from './components/Footer';
 
 // Routes imports
 import routes from './routes';
@@ -26,6 +27,7 @@ class App extends Component {
           <Route path={routes.movieDetails} component={MovieDetailsPage} />
           <Route component={NotFound} />
         </Switch>
+        <Footer />
       </>
     );
   }
