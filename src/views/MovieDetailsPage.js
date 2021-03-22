@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { NavLink, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 import Section from '../components/Section';
 import MovieCard from '../components/MovieCard';
 import BtnBack from '../components/BtnBack';
+import ExtraInfoBar from '../components/ExtraInfoBar';
 import Cast from '../components/Cast';
 import Reviews from '../components/Reviews';
 
@@ -27,18 +28,14 @@ class MovieDetailsPage extends Component {
 
   render() {
     const { movie } = this.state;
+    const { url } = this.props.match;
 
     if (movie) {
       return (
         <Section>
           <MovieCard movie={movie} />
-
           <BtnBack history={this.props.history} />
-
-          <ul>
-            <NavLink to={`${this.props.match.url}/cast`}>Cast</NavLink>
-            <NavLink to={`${this.props.match.url}/reviews`}>Reviews</NavLink>
-          </ul>
+          <ExtraInfoBar url={url} />
 
           <Route
             path={`${this.props.match.path}/cast`}
