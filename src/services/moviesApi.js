@@ -2,12 +2,13 @@ import axios from 'axios';
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 const BASE_URL = 'https://api.themoviedb.org/3';
+//https://api.themoviedb.org/3/movie/popular?api_key=<<api_key>>&language=en-US&page=1
 
 //Funciton to fetch trending movies
 async function fetchTrendingMovies() {
   try {
     const trendingMovies = await axios.get(
-      `${BASE_URL}/trending/all/day?api_key=${API_KEY}`,
+      `${BASE_URL}/movie/popular?api_key=${API_KEY}`,
     );
     return trendingMovies.data.results;
   } catch (error) {

@@ -22,11 +22,12 @@ class MovieDetailsPage extends Component {
       return (
         <>
           <h1>Details</h1>
-          <h1>{this.state.movie.title}</h1>
+          <h1>{title}</h1>
           <BtnBack history={this.props.history} />
           <img
             src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
             alt={title}
+            width="200"
           />
           <p>{overview}</p>
         </>
