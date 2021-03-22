@@ -14,8 +14,9 @@ const MoviesListItem = ({ popularMovie }) => {
         <img
           src={`https://image.tmdb.org/t/p/w500/${backdrop_path}`}
           alt={title}
+          className={styles['MoviesListItem-image']}
         />
-        {title}
+        <p className={styles.MovieTitle}>{title}</p>
       </Link>
     </li>
   );

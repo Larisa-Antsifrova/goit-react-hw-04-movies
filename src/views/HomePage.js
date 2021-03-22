@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import Section from '../components/Section';
 import MoviesList from '../components/MoviesList';
 import MoviesListItem from '../components/MoviesListItem';
 
@@ -19,14 +20,13 @@ class HomePage extends Component {
     const { popularMovies } = this.state;
 
     return (
-      <div>
-        <h1>Home Page</h1>
+      <Section>
         <MoviesList>
           {popularMovies.map(popularMovie => (
             <MoviesListItem key={popularMovie.id} popularMovie={popularMovie} />
           ))}
         </MoviesList>
-      </div>
+      </Section>
     );
   }
 }
