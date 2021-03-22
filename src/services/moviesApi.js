@@ -2,7 +2,6 @@ import axios from 'axios';
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 const BASE_URL = 'https://api.themoviedb.org/3';
-//https://api.themoviedb.org/3/movie/popular?api_key=<<api_key>>&language=en-US&page=1
 
 //Funciton to fetch trending movies
 async function fetchTrendingMovies() {
@@ -42,4 +41,36 @@ async function fetchMovie(movieId) {
   }
 }
 
-export { fetchTrendingMovies, fetchSearchedMovies, fetchMovie };
+// Function to fetch movie Cast details
+async function fetchCast(movieId) {
+  try {
+    const cast = await axios.get(
+      `${BASE_URL}/movie/${movieId}/credits?api_key=${API_KEY}`,
+    );
+
+    return cast.data.cast;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Function to fetch movie Reviews
+async function fetchReviews(movieId) {
+  try {
+    const reviews = await axios.get(
+      `${BASE_URL}/movie/${movieId}/reviews?api_key=${API_KEY}&page=1`,
+    );
+
+    return reviews.data.results;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export {
+  fetchTrendingMovies,
+  fetchSearchedMovies,
+  fetchMovie,
+  fetchCast,
+  fetchReviews,
+};

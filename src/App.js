@@ -34,24 +34,12 @@ class App extends Component {
                 Movies
               </NavLink>
             </li>
-            <li>
-              <NavLink
-                to="/test"
-                className="NavLink"
-                activeClassName="NavLink-active"
-              >
-                Test
-              </NavLink>
-            </li>
           </ul>
         </nav>
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route exact path="/test" component={TestPage} />
           <Route exact path="/movies" component={MoviesPage} />
-          <Route exact path="/movies/:movieId" component={MovieDetailsPage} />
-          <Route path="/movies/:movieId/cast" component={MovieDetailsPage} />
-          <Route path="/movies/:movieId/reviews" component={MovieDetailsPage} />
+          <Route path="/movies/:movieId" component={MovieDetailsPage} />
           <Route component={NotFound} />
         </Switch>
       </>

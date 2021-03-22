@@ -1,16 +1,26 @@
 import React, { Component } from 'react';
 import BtnBack from '../components/BtnBack';
-import { fetchMovie } from '../services/moviesApi';
+import { fetchMovie, fetchCast, fetchReviews } from '../services/moviesApi';
+import { NavLink } from 'react-router-dom';
+import Cast from '../components/Cast';
+import Reviews from '../components/Reviews';
+import { Route } from 'react-router-dom';
 
 class MovieDetailsPage extends Component {
   state = {
     movie: null,
+    cast: null,
+    reviews: null,
   };
 
   async componentDidMount() {
     const { movieId } = this.props.match.params;
+
     const movie = await fetchMovie(movieId);
-    this.setState({ movie: movie });
+    const cast = await fetchCast(movieId);
+    const reviews = await fetchReviews(movieId);
+
+    this.setState({ movie, cast, reviews });
   }
 
   render() {
@@ -21,7 +31,6 @@ class MovieDetailsPage extends Component {
 
       return (
         <>
-          <h1>Details</h1>
           <h1>{title}</h1>
           <BtnBack history={this.props.history} />
           <img
@@ -30,6 +39,16 @@ class MovieDetailsPage extends Component {
             width="200"
           />
           <p>{overview}</p>
+          <ul>
+            <NavLink to={`${this.props.match.url}/cast`}>Cast</NavLink>
+            <NavLink to={`${this.props.match.url}/reviews`}>Reviews</NavLink>
+          </ul>
+
+          <Route path={`${this.props.match.path}/cast`} component={Cast} />
+          <Route
+            path={`${this.props.match.path}/reviews`}
+            component={Reviews}
+          />
         </>
       );
     } else {
