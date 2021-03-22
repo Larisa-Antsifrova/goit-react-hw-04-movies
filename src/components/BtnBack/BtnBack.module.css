@@ -1,0 +1,21 @@
+.Button {
+  padding: 5px;
+  margin-bottom: 20px;
+
+  color: #009688;
+  text-transform: uppercase;
+
+  border: 1px solid #009688;
+  border-radius: 4px;
+
+  background-color: #ffffff;
+
+  cursor: pointer;
+  outline: none;
+}
+
+.Button:hover,
+.Button:focus {
+  background-color: #e0f2f1;
+  outline: none;
+}
