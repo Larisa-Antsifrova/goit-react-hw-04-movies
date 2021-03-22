@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 
 import styles from './MoviesListItem.module.css';
 
-const MoviesListItem = ({ popularMovie }) => {
-  const { title, id, backdrop_path } = popularMovie;
+const MoviesListItem = ({ movie }) => {
+  const { title, id, backdrop_path } = movie;
 
   return (
     <li className={styles.MoviesListItem}>
@@ -23,7 +23,7 @@ const MoviesListItem = ({ popularMovie }) => {
 };
 
 MoviesListItem.propTypes = {
-  popularMovie: PropTypes.shape({
+  movie: PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     backdrop_path: PropTypes.string.isRequired,

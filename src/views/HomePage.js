@@ -17,13 +17,13 @@ class HomePage extends Component {
   }
 
   render() {
-    const { popularMovies } = this.state;
+    const { popularMovies: movies } = this.state;
 
     return (
       <Section>
         <MoviesList>
-          {popularMovies.map(popularMovie => (
-            <MoviesListItem key={popularMovie.id} popularMovie={popularMovie} />
+          {movies.map(movie => (
+            <MoviesListItem key={movie.id} movie={movie} />
           ))}
         </MoviesList>
       </Section>
