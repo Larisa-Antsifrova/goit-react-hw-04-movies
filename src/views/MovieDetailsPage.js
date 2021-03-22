@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import { NavLink, Route } from 'react-router-dom';
+
+import Section from '../components/Section';
+import MovieCard from '../components/MovieCard';
 import BtnBack from '../components/BtnBack';
-import { fetchMovie, fetchCast, fetchReviews } from '../services/moviesApi';
-import { NavLink } from 'react-router-dom';
 import Cast from '../components/Cast';
 import Reviews from '../components/Reviews';
-import { Route } from 'react-router-dom';
 
+import { fetchMovie, fetchCast, fetchReviews } from '../services/moviesApi';
 class MovieDetailsPage extends Component {
   state = {
     movie: null,
@@ -27,18 +29,12 @@ class MovieDetailsPage extends Component {
     const { movie } = this.state;
 
     if (movie) {
-      const { title, poster_path, overview } = movie;
-
       return (
-        <>
-          <h1>{title}</h1>
+        <Section>
+          <MovieCard movie={movie} />
+
           <BtnBack history={this.props.history} />
-          <img
-            src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
-            alt={title}
-            width="200"
-          />
-          <p>{overview}</p>
+
           <ul>
             <NavLink to={`${this.props.match.url}/cast`}>Cast</NavLink>
             <NavLink to={`${this.props.match.url}/reviews`}>Reviews</NavLink>
@@ -54,7 +50,7 @@ class MovieDetailsPage extends Component {
               <Reviews {...props} reviews={this.state.reviews} />
             )}
           />
-        </>
+        </Section>
       );
     } else {
       return null;
