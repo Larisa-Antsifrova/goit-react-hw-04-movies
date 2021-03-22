@@ -29,7 +29,7 @@ class MovieDetailsPage extends Component {
   }
 
   render() {
-    const { movie } = this.state;
+    const { movie, reviews } = this.state;
     const { url } = this.props.match;
 
     if (movie) {
@@ -45,9 +45,13 @@ class MovieDetailsPage extends Component {
           />
           <Route
             path={`${this.props.match.path}/reviews`}
-            render={props => (
-              <Reviews {...props} reviews={this.state.reviews} />
-            )}
+            render={props =>
+              !_.isEmpty(reviews) ? (
+                <Reviews {...props} reviews={this.state.reviews} />
+              ) : (
+                'No reviews.'
+              )
+            }
           />
         </Section>
       );
