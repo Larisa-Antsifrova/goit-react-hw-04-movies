@@ -1,12 +1,15 @@
 // React imports
 import React, { Component } from 'react';
-import { Route, NavLink, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 // Views imports
 import HomePage from './views/HomePage';
 import MoviesPage from './views/MoviesPage';
 import MovieDetailsPage from './views/MovieDetailsPage';
 import NotFound from './views/NotFound';
+
+// Components imports
+import AppBar from './components/AppBar';
 
 // Routes imports
 import routes from './routes';
@@ -16,29 +19,7 @@ class App extends Component {
   render() {
     return (
       <>
-        <nav>
-          <ul>
-            <li>
-              <NavLink
-                exact
-                to={routes.home}
-                className="NavLink"
-                activeClassName="NavLink-active"
-              >
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to={routes.movieSearch}
-                className="NavLink"
-                activeClassName="NavLink-active"
-              >
-                Movies
-              </NavLink>
-            </li>
-          </ul>
-        </nav>
+        <AppBar />
         <Switch>
           <Route exact path={routes.home} component={HomePage} />
           <Route exact path={routes.movieSearch} component={MoviesPage} />
