@@ -27,7 +27,7 @@ class App extends Component {
           <Route path={routes.movieDetails} component={MovieDetailsPage} />
           <Route component={NotFound} />
         </Switch>
-        <Footer />
+        {/* <Footer /> */}
       </>
     );
   }
