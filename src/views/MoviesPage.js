@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
 import Section from '../components/Section';
 import MoviesList from '../components/MoviesList';
@@ -38,8 +37,8 @@ class MoviesPage extends Component {
 
     return (
       <Section>
-        <BtnBack history={this.props.history} />
         <Search onSubmit={this.handleSubmit} />
+        <BtnBack history={this.props.history} />
         <MoviesList>
           {movies.map(movie => (
             <MoviesListItem key={movie.id} movie={movie} />
