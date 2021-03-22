@@ -1,9 +1,13 @@
 import React from 'react';
 
-const Cast = () => {
+const Cast = ({ cast }) => {
   return (
     <div>
-      <p>Cast information</p>
+      <ul>
+        {cast.map(actor => (
+          <li key={actor.id}>{actor.name}</li>
+        ))}
+      </ul>
     </div>
   );
 };

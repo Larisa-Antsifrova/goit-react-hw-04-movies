@@ -1,11 +1,12 @@
+// React imports
 import React, { Component } from 'react';
+import { Route, NavLink, Switch } from 'react-router-dom';
 
+// Views imports
 import HomePage from './views/HomePage';
 import MoviesPage from './views/MoviesPage';
 import MovieDetailsPage from './views/MovieDetailsPage';
 import NotFound from './views/NotFound';
-
-import { Route, NavLink, Switch } from 'react-router-dom';
 
 class App extends Component {
   state = {};
