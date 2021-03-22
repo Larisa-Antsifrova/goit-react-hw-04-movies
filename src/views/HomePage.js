@@ -1,33 +1,31 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+
+import MoviesList from '../components/MoviesList';
+import MoviesListItem from '../components/MoviesListItem';
 
 import { fetchTrendingMovies } from '../services/moviesApi';
 
 class HomePage extends Component {
   state = {
-    trendingMovies: [],
+    popularMovies: [],
   };
 
   async componentDidMount() {
-    const trendingMovies = await fetchTrendingMovies();
-    this.setState({ trendingMovies });
+    const popularMovies = await fetchTrendingMovies();
+    this.setState({ popularMovies });
   }
 
   render() {
-    const { trendingMovies } = this.state;
+    const { popularMovies } = this.state;
 
     return (
       <div>
         <h1>Home Page</h1>
-        <ul>
-          {trendingMovies.map(trendingMovie => (
-            <li key={trendingMovie.id}>
-              <Link to={`/movies/${trendingMovie.id}`}>
-                {trendingMovie.title ? trendingMovie.title : trendingMovie.name}
-              </Link>
-            </li>
+        <MoviesList>
+          {popularMovies.map(popularMovie => (
+            <MoviesListItem key={popularMovie.id} popularMovie={popularMovie} />
           ))}
-        </ul>
+        </MoviesList>
       </div>
     );
   }
