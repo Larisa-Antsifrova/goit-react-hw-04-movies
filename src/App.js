@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import HomePage from './views/HomePage';
 import MoviesPage from './views/MoviesPage';
 import MovieDetailsPage from './views/MovieDetailsPage';
-import TestPage from './views/TestPage';
 import NotFound from './views/NotFound';
 
 import { Route, NavLink, Switch } from 'react-router-dom';
