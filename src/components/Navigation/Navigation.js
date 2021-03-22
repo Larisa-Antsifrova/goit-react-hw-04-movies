@@ -7,7 +7,7 @@ import styles from './Navigation.module.css';
 const Navigation = () => {
   return (
     <nav>
-      <ul>
+      <ul className={styles.NavLinksList}>
         <li>
           <NavLink
             exact

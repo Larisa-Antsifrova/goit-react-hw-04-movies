@@ -1,7 +1,16 @@
+.NavLinksList {
+  display: flex;
+  text-transform: uppercase;
+}
+
 .NavLink {
-  color: green;
+  display: inline-block;
+  padding: 20px;
+
+  font-weight: 500;
+  color: #4db6ac;
 }
 
 .NavLink-active {
-  color: tomato;
+  background-color: #e0f2f1;
 }
