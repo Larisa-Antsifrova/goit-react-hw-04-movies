@@ -7,6 +7,7 @@ import MoviesListItem from '../components/MoviesListItem';
 import Search from '../components/Search';
 
 import { fetchSearchedMovies } from '../services/moviesApi';
+import queryString from 'query-string';
 
 class MoviesPage extends Component {
   state = {
@@ -18,14 +19,8 @@ class MoviesPage extends Component {
   componentDidMount() {
     const { search, pathname } = this.props.location;
 
-    // const searchParams = queryString.parse(search);
-
-    // if (pathname && search) {
-    //   this.setState({ searchMovie: searchParams.query });
-    // }
-
     if (pathname && search) {
-      this.setState({ query: search.slice(7) });
+      this.setState({ query: queryString.parse(search).query });
     }
   }
 
