@@ -1,9 +1,12 @@
+// React imports
 import React, { Component } from 'react';
 
+// Components imports
 import Section from '../components/Section';
 import MoviesList from '../components/MoviesList';
 import MoviesListItem from '../components/MoviesListItem';
 
+//  Functions imports
 import { fetchTrendingMovies } from '../services/moviesApi';
 
 class HomePage extends Component {

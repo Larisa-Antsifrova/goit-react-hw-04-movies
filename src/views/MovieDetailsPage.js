@@ -1,6 +1,8 @@
+// React imports
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 
+// Components imports
 import Section from '../components/Section';
 import MovieCard from '../components/MovieCard';
 import BtnBack from '../components/BtnBack';
@@ -8,6 +10,7 @@ import ExtraInfoBar from '../components/ExtraInfoBar';
 import Cast from '../components/Cast';
 import Reviews from '../components/Reviews';
 
+//  Functions and external libraries imports
 import { fetchMovie, fetchCast, fetchReviews } from '../services/moviesApi';
 import _ from 'lodash';
 
