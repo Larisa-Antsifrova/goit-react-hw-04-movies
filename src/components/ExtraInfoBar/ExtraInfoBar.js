@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import styles from './ExtraInfoBar.module.css';
 
@@ -26,6 +27,10 @@ const ExtraInfoBar = ({ url }) => {
       </li>
     </ul>
   );
+};
+
+ExtraInfoBar.propTypes = {
+  url: PropTypes.string.isRequired,
 };
 
 export default ExtraInfoBar;
