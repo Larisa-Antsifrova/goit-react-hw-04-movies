@@ -50,7 +50,7 @@ class MovieDetailsPage extends Component {
               !_.isEmpty(reviews) ? (
                 <Reviews {...props} reviews={reviews} />
               ) : (
-                'No reviews.'
+                <p className="no-reviews">No reviews.</p>
               )
             }
           />

@@ -48,3 +48,11 @@ p {
   margin: 20px auto;
   text-align: center;
 }
+
+/* 
+Single paragraph styles
+ */
+
+.no-reviews {
+  text-align: center;
+}
