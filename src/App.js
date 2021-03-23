@@ -5,6 +5,8 @@ import { Route, Switch } from 'react-router-dom';
 // Components imports
 import AppBar from './components/AppBar';
 // import Footer from './components/Footer';
+import Loader from 'react-loader-spinner';
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
 // Routes imports
 import routes from './routes';
@@ -25,7 +27,17 @@ const App = () => {
   return (
     <>
       <AppBar />
-      <Suspense fallback="...Loading">
+      <Suspense
+        fallback={
+          <Loader
+            type="TailSpin"
+            color="#00BFFF"
+            height={80}
+            width={80}
+            className="loader"
+          />
+        }
+      >
         <Switch>
           <Route exact path={routes.home} component={HomePage} />
           <Route exact path={routes.movieSearch} component={MoviesPage} />

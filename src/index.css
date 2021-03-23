@@ -40,3 +40,11 @@ a {
 p {
   margin: 0;
 }
+
+/* 
+* Styles for the Loader
+*/
+.loader {
+  margin: 20px auto;
+  text-align: center;
+}
