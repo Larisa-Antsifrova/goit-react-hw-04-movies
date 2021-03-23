@@ -1,5 +1,5 @@
 // React imports
-import React, { Component, Suspense, lazy } from 'react';
+import React, { Suspense, lazy } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 // Views imports
@@ -26,24 +26,21 @@ const MovieDetailsPage = lazy(() =>
   import('./views/MovieDetailsPage.js' /* webpackChunkName: "details-page" */),
 );
 
-class App extends Component {
-  state = {};
-  render() {
-    return (
-      <>
-        <AppBar />
-        <Suspense fallback="...Loading">
-          <Switch>
-            <Route exact path={routes.home} component={HomePage} />
-            <Route exact path={routes.movieSearch} component={MoviesPage} />
-            <Route path={routes.movieDetails} component={MovieDetailsPage} />
-            <Route component={NotFound} />
-          </Switch>
-        </Suspense>
-        {/* <Footer /> */}
-      </>
-    );
-  }
-}
+const App = () => {
+  return (
+    <>
+      <AppBar />
+      <Suspense fallback="...Loading">
+        <Switch>
+          <Route exact path={routes.home} component={HomePage} />
+          <Route exact path={routes.movieSearch} component={MoviesPage} />
+          <Route path={routes.movieDetails} component={MovieDetailsPage} />
+          <Route component={NotFound} />
+        </Switch>
+      </Suspense>
+      {/* <Footer /> */}
+    </>
+  );
+};
 
 export default App;
