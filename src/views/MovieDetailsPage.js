@@ -29,8 +29,8 @@ class MovieDetailsPage extends Component {
   }
 
   render() {
-    const { movie, reviews } = this.state;
-    const { url } = this.props.match;
+    const { movie, reviews, cast } = this.state;
+    const { url, path } = this.props.match;
 
     if (movie) {
       return (
@@ -40,14 +40,14 @@ class MovieDetailsPage extends Component {
           <ExtraInfoBar url={url} />
 
           <Route
-            path={`${this.props.match.path}/cast`}
-            render={props => <Cast {...props} cast={this.state.cast} />}
+            path={`${path}/cast`}
+            render={props => <Cast {...props} cast={cast} />}
           />
           <Route
-            path={`${this.props.match.path}/reviews`}
+            path={`${path}/reviews`}
             render={props =>
               !_.isEmpty(reviews) ? (
-                <Reviews {...props} reviews={this.state.reviews} />
+                <Reviews {...props} reviews={reviews} />
               ) : (
                 'No reviews.'
               )
