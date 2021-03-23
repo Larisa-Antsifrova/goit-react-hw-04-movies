@@ -1,17 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 
 import styles from './MoviesListItem.module.css';
 import defaultBackdropImg from './defaultBackdropImg.jpg';
 
-const MoviesListItem = ({ movie }) => {
+const MoviesListItem = ({ movie, location }) => {
   const { title, id, backdrop_path } = movie;
 
   return (
     <li className={styles.MoviesListItem}>
-      <Link to={`/movies/${id}`}>
+      <Link to={{ pathname: `/movies/${id}`, state: { from: location } }}>
         <img
           src={
             backdrop_path
@@ -35,4 +35,4 @@ MoviesListItem.propTypes = {
   }).isRequired,
 };
 
-export default MoviesListItem;
+export default withRouter(MoviesListItem);
