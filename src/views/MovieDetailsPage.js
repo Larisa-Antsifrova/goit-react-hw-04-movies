@@ -1,5 +1,5 @@
 // React imports
-import React, { Component } from 'react';
+import React, { Component, Suspense, lazy } from 'react';
 import { Route } from 'react-router-dom';
 
 // Components imports
@@ -7,13 +7,21 @@ import Section from '../components/Section';
 import MovieCard from '../components/MovieCard';
 import BtnBack from '../components/BtnBack';
 import ExtraInfoBar from '../components/ExtraInfoBar';
-import Cast from '../components/Cast';
-import Reviews from '../components/Reviews';
 
 //  Functions and external libraries imports
 import { fetchMovie, fetchCast, fetchReviews } from '../services/moviesApi';
 import _ from 'lodash';
+import Loader from 'react-loader-spinner';
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
+// Lazy imports
+const Cast = lazy(() =>
+  import('../components/Cast' /* webpackChunkName: "cast-section" */),
+);
+
+const Reviews = lazy(() =>
+  import('../components/Reviews' /* webpackChunkName: "reviews-section" */),
+);
 class MovieDetailsPage extends Component {
   state = {
     movie: null,
@@ -43,20 +51,32 @@ class MovieDetailsPage extends Component {
           <BtnBack location={location} history={history} />
           <ExtraInfoBar url={url} location={location} />
 
-          <Route
-            path={`${path}/cast`}
-            render={props => <Cast {...props} cast={cast} />}
-          />
-          <Route
-            path={`${path}/reviews`}
-            render={props =>
-              !_.isEmpty(reviews) ? (
-                <Reviews {...props} reviews={reviews} />
-              ) : (
-                <p className="no-reviews">No reviews.</p>
-              )
+          <Suspense
+            fallback={
+              <Loader
+                type="TailSpin"
+                color="#00BFFF"
+                height={80}
+                width={80}
+                className="loader"
+              />
             }
-          />
+          >
+            <Route
+              path={`${path}/cast`}
+              render={props => <Cast {...props} cast={cast} />}
+            />
+            <Route
+              path={`${path}/reviews`}
+              render={props =>
+                !_.isEmpty(reviews) ? (
+                  <Reviews {...props} reviews={reviews} />
+                ) : (
+                  <p className="no-reviews">No reviews.</p>
+                )
+              }
+            />
+          </Suspense>
         </Section>
       );
     } else {
