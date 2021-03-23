@@ -2,12 +2,6 @@
 import React, { Suspense, lazy } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-// Views imports
-// import HomePage from './views/HomePage';
-// import MoviesPage from './views/MoviesPage';
-// import MovieDetailsPage from './views/MovieDetailsPage';
-// import NotFound from './views/NotFound';
-
 // Components imports
 import AppBar from './components/AppBar';
 // import Footer from './components/Footer';
@@ -15,6 +9,7 @@ import AppBar from './components/AppBar';
 // Routes imports
 import routes from './routes';
 
+// Views imports
 // Lazy loading for views
 const HomePage = lazy(() =>
   import('./views/HomePage.js' /* webpackChunkName: "home-page" */),
