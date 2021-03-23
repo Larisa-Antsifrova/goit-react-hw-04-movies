@@ -5,7 +5,6 @@ import MoviesList from '../components/MoviesList';
 import MoviesListItem from '../components/MoviesListItem';
 
 import Search from '../components/Search';
-import BtnBack from '../components/BtnBack';
 
 import { fetchSearchedMovies } from '../services/moviesApi';
 
@@ -34,12 +33,10 @@ class MoviesPage extends Component {
 
   render() {
     const { searchedMovies: movies } = this.state;
-    const { location, history } = this.props;
 
     return (
       <Section>
         <Search onSubmit={this.handleSubmit} />
-        <BtnBack location={location} history={history} />
         <MoviesList>
           {movies.map(movie => (
             <MoviesListItem key={movie.id} movie={movie} />
