@@ -1,11 +1,13 @@
+// React imports
 import React, { Component } from 'react';
 
+// Components imports
 import Section from '../components/Section';
 import MoviesList from '../components/MoviesList';
 import MoviesListItem from '../components/MoviesListItem';
-
 import Search from '../components/Search';
 
+//  Functions and external libraries imports
 import { fetchSearchedMovies } from '../services/moviesApi';
 import queryString from 'query-string';
 
@@ -13,7 +15,6 @@ class MoviesPage extends Component {
   state = {
     searchedMovies: [],
     query: '',
-    page: 1,
   };
 
   componentDidMount() {
@@ -27,21 +28,22 @@ class MoviesPage extends Component {
   async componentDidUpdate(prevProps, prevState) {
     const { query } = this.state;
 
-    if (prevState.query !== this.state.query) {
+    if (prevState.query !== query) {
       const searchedMovies = await fetchSearchedMovies(query);
       this.setState({ searchedMovies });
     }
   }
 
   handleSubmit = newQuery => {
+    const { history, location } = this.props;
+
     this.setState({
       searchedMovies: [],
       query: newQuery,
-      page: 1,
     });
 
-    this.props.history.push({
-      ...this.props.location,
+    history.push({
+      ...location,
       search: `?query=${newQuery}`,
     });
   };
