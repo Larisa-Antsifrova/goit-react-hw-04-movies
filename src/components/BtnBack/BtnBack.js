@@ -1,22 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
+import routes from '../../routes';
 
 import styles from './BtnBack.module.css';
 
-const BtnBack = ({ callback }) => {
-  return (
-    <button onClick={callback} className={styles.Button}>
-      Return
-    </button>
-  );
-};
+class BtnBack extends Component {
+  handleGoBack = () => {
+    const { location, history } = this.props;
+    history.push(location?.state?.from?.pathname || routes.home);
+  };
+
+  render() {
+    return (
+      <button onClick={this.handleGoBack} className={styles.Button}>
+        Return
+      </button>
+    );
+  }
+}
 
 export default BtnBack;
-// const BtnBack = ({ history }) => {
-//   return (
-//     <button onClick={history.goBack} className={styles.Button}>
-//       Return
-//     </button>
-//   );
-// };
-
-// export default BtnBack;

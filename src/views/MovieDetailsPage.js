@@ -8,7 +8,6 @@ import ExtraInfoBar from '../components/ExtraInfoBar';
 import Cast from '../components/Cast';
 import Reviews from '../components/Reviews';
 
-import routes from '../routes';
 import { fetchMovie, fetchCast, fetchReviews } from '../services/moviesApi';
 import _ from 'lodash';
 
@@ -29,22 +28,16 @@ class MovieDetailsPage extends Component {
     this.setState({ movie, cast, reviews });
   }
 
-  handleGoBack = () => {
-    const { location } = this.props;
-
-    this.props.history.push(location?.state?.from?.pathname || routes.home);
-  };
-
   render() {
     const { movie, reviews, cast } = this.state;
     const { url, path } = this.props.match;
+    const { location, history } = this.props;
 
     if (movie) {
       return (
         <Section>
           <MovieCard movie={movie} />
-          <BtnBack callback={this.handleGoBack} />
-          {/* <BtnBack history={this.props.history} /> */}
+          <BtnBack location={location} history={history} />
           <ExtraInfoBar url={url} />
 
           <Route

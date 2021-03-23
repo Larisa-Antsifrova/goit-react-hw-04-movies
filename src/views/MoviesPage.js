@@ -34,11 +34,12 @@ class MoviesPage extends Component {
 
   render() {
     const { searchedMovies: movies } = this.state;
+    const { location, history } = this.props;
 
     return (
       <Section>
         <Search onSubmit={this.handleSubmit} />
-        <BtnBack history={this.props.history} />
+        <BtnBack location={location} history={history} />
         <MoviesList>
           {movies.map(movie => (
             <MoviesListItem key={movie.id} movie={movie} />
