@@ -6,7 +6,7 @@ import { Route, Switch } from 'react-router-dom';
 // import HomePage from './views/HomePage';
 // import MoviesPage from './views/MoviesPage';
 // import MovieDetailsPage from './views/MovieDetailsPage';
-import NotFound from './views/NotFound';
+// import NotFound from './views/NotFound';
 
 // Components imports
 import AppBar from './components/AppBar';
@@ -35,7 +35,7 @@ const App = () => {
           <Route exact path={routes.home} component={HomePage} />
           <Route exact path={routes.movieSearch} component={MoviesPage} />
           <Route path={routes.movieDetails} component={MovieDetailsPage} />
-          <Route component={NotFound} />
+          <Route component={HomePage} />
         </Switch>
       </Suspense>
       {/* <Footer /> */}

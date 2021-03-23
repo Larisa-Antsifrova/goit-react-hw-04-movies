@@ -29,25 +29,26 @@ class MovieDetailsPage extends Component {
   }
 
   render() {
-    const { movie, reviews } = this.state;
-    const { url } = this.props.match;
+    const { movie, reviews, cast } = this.state;
+    const { url, path } = this.props.match;
+    const { location, history } = this.props;
 
     if (movie) {
       return (
         <Section>
           <MovieCard movie={movie} />
-          <BtnBack history={this.props.history} />
-          <ExtraInfoBar url={url} />
+          <BtnBack location={location} history={history} />
+          <ExtraInfoBar url={url} location={location} />
 
           <Route
-            path={`${this.props.match.path}/cast`}
-            render={props => <Cast {...props} cast={this.state.cast} />}
+            path={`${path}/cast`}
+            render={props => <Cast {...props} cast={cast} />}
           />
           <Route
-            path={`${this.props.match.path}/reviews`}
+            path={`${path}/reviews`}
             render={props =>
               !_.isEmpty(reviews) ? (
-                <Reviews {...props} reviews={this.state.reviews} />
+                <Reviews {...props} reviews={reviews} />
               ) : (
                 'No reviews.'
               )

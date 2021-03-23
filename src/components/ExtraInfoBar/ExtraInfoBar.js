@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 
 import styles from './ExtraInfoBar.module.css';
 
-const ExtraInfoBar = ({ url }) => {
+const ExtraInfoBar = ({ url, location }) => {
   return (
     <ul className={styles.NavLinksList}>
       <li>
         <NavLink
-          to={`${url}/cast`}
+          to={{ pathname: `${url}/cast`, state: { ...location.state } }}
           className={styles.NavLink}
           activeClassName={styles['NavLink-active']}
         >
@@ -18,7 +18,7 @@ const ExtraInfoBar = ({ url }) => {
       </li>
       <li>
         <NavLink
-          to={`${url}/reviews`}
+          to={{ pathname: `${url}/reviews`, state: { ...location.state } }}
           className={styles.NavLink}
           activeClassName={styles['NavLink-active']}
         >

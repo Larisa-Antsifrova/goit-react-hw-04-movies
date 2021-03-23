@@ -5,9 +5,9 @@ import MoviesList from '../components/MoviesList';
 import MoviesListItem from '../components/MoviesListItem';
 
 import Search from '../components/Search';
-import BtnBack from '../components/BtnBack';
 
 import { fetchSearchedMovies } from '../services/moviesApi';
+import queryString from 'query-string';
 
 class MoviesPage extends Component {
   state = {
@@ -16,8 +16,17 @@ class MoviesPage extends Component {
     page: 1,
   };
 
+  componentDidMount() {
+    const { search, pathname } = this.props.location;
+
+    if (pathname && search) {
+      this.setState({ query: queryString.parse(search).query });
+    }
+  }
+
   async componentDidUpdate(prevProps, prevState) {
     const { query } = this.state;
+
     if (prevState.query !== this.state.query) {
       const searchedMovies = await fetchSearchedMovies(query);
       this.setState({ searchedMovies });
@@ -30,6 +39,11 @@ class MoviesPage extends Component {
       query: newQuery,
       page: 1,
     });
+
+    this.props.history.push({
+      ...this.props.location,
+      search: `?query=${newQuery}`,
+    });
   };
 
   render() {
@@ -38,7 +52,6 @@ class MoviesPage extends Component {
     return (
       <Section>
         <Search onSubmit={this.handleSubmit} />
-        <BtnBack history={this.props.history} />
         <MoviesList>
           {movies.map(movie => (
             <MoviesListItem key={movie.id} movie={movie} />
