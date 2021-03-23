@@ -35,7 +35,7 @@ const App = () => {
           <Route exact path={routes.home} component={HomePage} />
           <Route exact path={routes.movieSearch} component={MoviesPage} />
           <Route path={routes.movieDetails} component={MovieDetailsPage} />
-          <Route component={NotFound} />
+          <Route component={HomePage} />
         </Switch>
       </Suspense>
       {/* <Footer /> */}
