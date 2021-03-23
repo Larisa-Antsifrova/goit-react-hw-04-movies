@@ -38,7 +38,7 @@ class MovieDetailsPage extends Component {
         <Section>
           <MovieCard movie={movie} />
           <BtnBack location={location} history={history} />
-          <ExtraInfoBar url={url} />
+          <ExtraInfoBar url={url} location={location} />
 
           <Route
             path={`${path}/cast`}

@@ -6,10 +6,7 @@ import styles from './BtnBack.module.css';
 class BtnBack extends Component {
   handleGoBack = () => {
     const { location, history } = this.props;
-
-    console.log('path', location?.state?.from?.pathname);
-
-    history.push(location?.state?.from?.pathname || routes.home);
+    history.push(location?.state?.from || routes.home);
   };
 
   render() {
