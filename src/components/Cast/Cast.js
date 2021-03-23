@@ -1,24 +1,38 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import styles from './Cast.module.css';
+import defaultAvatar from './defaultAvatar.jpg';
 
 const Cast = ({ cast }) => {
-  console.log(cast);
   return (
-    <div>
-      <ul className={styles.castList}>
-        {cast.map(actor => (
-          <li key={actor.id} className={styles.item}>
-            <img
-              className={styles.avatar}
-              src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
-              alt="User avatar"
-            />
-            <p className={styles.name}>{actor.name}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <ul className={styles.castList}>
+      {cast.map(({ id, profile_path, name }) => (
+        <li key={id} className={styles.item}>
+          <img
+            className={styles.avatar}
+            src={
+              profile_path
+                ? `https://image.tmdb.org/t/p/w500/${profile_path}`
+                : defaultAvatar
+            }
+            alt={name}
+          />
+          <p className={styles.name}>{name}</p>
+        </li>
+      ))}
+    </ul>
   );
+};
+
+Cast.propTypes = {
+  cast: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      profile_path: PropTypes.string,
+      name: PropTypes.string.isRequired,
+    }),
+  ),
 };
 
 export default Cast;
