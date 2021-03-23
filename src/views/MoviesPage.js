@@ -17,6 +17,7 @@ class MoviesPage extends Component {
 
   async componentDidUpdate(prevProps, prevState) {
     const { query } = this.state;
+
     if (prevState.query !== this.state.query) {
       const searchedMovies = await fetchSearchedMovies(query);
       this.setState({ searchedMovies });
