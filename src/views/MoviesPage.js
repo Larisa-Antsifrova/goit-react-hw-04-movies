@@ -10,9 +10,12 @@ import Search from '../components/Search';
 //  Functions and external libraries imports
 import { fetchSearchedMovies } from '../services/moviesApi';
 import queryString from 'query-string';
+import Loader from 'react-loader-spinner';
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
 class MoviesPage extends Component {
   state = {
+    isLoading: false,
     searchedMovies: [],
     query: '',
   };
@@ -29,8 +32,9 @@ class MoviesPage extends Component {
     const { query } = this.state;
 
     if (prevState.query !== query) {
+      this.setState({ isLoading: true });
       const searchedMovies = await fetchSearchedMovies(query);
-      this.setState({ searchedMovies });
+      this.setState({ searchedMovies, isLoading: false });
     }
   }
 
@@ -49,16 +53,27 @@ class MoviesPage extends Component {
   };
 
   render() {
-    const { searchedMovies: movies } = this.state;
+    const { searchedMovies: movies, isLoading } = this.state;
 
     return (
       <Section>
         <Search onSubmit={this.handleSubmit} />
+
         <MoviesList>
           {movies.map(movie => (
             <MoviesListItem key={movie.id} movie={movie} />
           ))}
         </MoviesList>
+
+        {isLoading && (
+          <Loader
+            type="TailSpin"
+            color="#009688"
+            height={80}
+            width={80}
+            className="loader"
+          />
+        )}
       </Section>
     );
   }

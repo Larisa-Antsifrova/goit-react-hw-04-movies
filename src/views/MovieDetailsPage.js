@@ -55,7 +55,7 @@ class MovieDetailsPage extends Component {
             fallback={
               <Loader
                 type="TailSpin"
-                color="#00BFFF"
+                color="#80cbc4"
                 height={80}
                 width={80}
                 className="loader"
