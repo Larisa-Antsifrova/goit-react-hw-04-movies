@@ -15,9 +15,12 @@ class HomePage extends Component {
   };
 
   async componentDidMount() {
-    const popularMovies = await fetchTrendingMovies();
-    this.setState({ popularMovies });
+    fetchTrendingMovies(this.updateState);
   }
+
+  updateState = value => {
+    this.setState({ popularMovies: value });
+  };
 
   render() {
     const { popularMovies: movies } = this.state;

@@ -6,12 +6,12 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 const BASE_URL = 'https://api.themoviedb.org/3';
 
 //Funciton to fetch trending movies
-async function fetchTrendingMovies() {
+async function fetchTrendingMovies(callback) {
   try {
     const trendingMovies = await axios.get(
       `${BASE_URL}/movie/popular?api_key=${API_KEY}`,
     );
-    return trendingMovies.data.results;
+    return callback(trendingMovies.data.results);
   } catch (error) {
     console.error(error.message);
   }
